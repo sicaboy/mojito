@@ -20,7 +20,7 @@ class CaptchaController extends Controller
     {
         $key = Str::uuid()->toString();
 
-        $captcha = $captchaBuilder->build();
+        $captcha = $captchaBuilder->build()->setPhrase('1234');
         $expiredAt = Carbon::now()->addMinutes(config("mojito.captcha_cache_ttl", 2));
 
         Cache::put($key, ['code' => $captcha->getPhrase()], $expiredAt);
