@@ -8,7 +8,7 @@ $router->namespace('\Moell\Mojito\Http\Controllers')
     ->group(function ($router) {
         $router->post("auth/login", "LoginController@authenticate");
 
-        $router->get("/captcha", "CaptchaController@generate");
+//        $router->get("/captcha", "CaptchaController@generate");
 
         $router->middleware(config("mojito.middleware.auth", ['auth:sanctum']))->group(function ($router) {
             $router->post("auth/logout", "LoginController@logout")->name("auth.logout");

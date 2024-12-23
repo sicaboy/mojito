@@ -23,16 +23,16 @@ class LoginController extends Controller
             return $this->forbidden("Undefined guard");
         }
 
-        $cacheCaptcha = Cache::get($request->captcha_key);
-        if (! $cacheCaptcha) {
-            return $this->forbidden('Verification code has expired');
-        }
-
-        if (strtolower($cacheCaptcha['code']) != strtolower($request->captcha)) {
-            return $this->forbidden('Please enter correct verify code');
-        }
-
-        Cache::forget($request->captcha_key);
+//        $cacheCaptcha = Cache::get($request->captcha_key);
+//        if (! $cacheCaptcha) {
+//            return $this->forbidden('Verification code has expired');
+//        }
+//
+//        if (strtolower($cacheCaptcha['code']) != strtolower($request->captcha)) {
+//            return $this->forbidden('Please enter correct verify code');
+//        }
+//
+//        Cache::forget($request->captcha_key);
 
         $conditions = data_get($config, 'conditions', []);
 
